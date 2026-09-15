@@ -48,7 +48,7 @@ switcher_use() {
     [ "$#" -eq 1 ] || { printf '%s\n' 'Usage: switcher_use <project>' >&2; return 2; }
     _switcher_resolve "$1" "$PWD" || return $?
     export SWITCHER_PROJECT="$SWITCHER_RESOLVED_NAME"
-    switcher_project
+    switcher_project "$PWD"
 }
 
 switcher_connect() {
