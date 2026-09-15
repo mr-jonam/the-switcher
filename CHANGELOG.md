@@ -1,8 +1,24 @@
 # Changelog
 
+English | [Italiano](CHANGELOG.it.md)
+
 All notable changes to this project are documented here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.1.0] - 2026-09-15
+
+### Added
+- Linux and macOS support through a Bash/Zsh wrapper, a Python 3 resolver and
+  an idempotent `install.sh`.
+- Unix project-map template and dependency-free resolver/profile tests.
+- Ubuntu and macOS CI jobs.
+- Complete English and Italian documentation pairs.
+
+### Changed
+- PowerShell module version advanced to 1.1.0.
+- Credential-store documentation now covers Windows Credential Manager,
+  Linux Secret Service keyrings and macOS Keychain.
 
 ## [1.0.0] - 2026-09-15
 

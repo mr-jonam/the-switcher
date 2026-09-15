@@ -1,5 +1,7 @@
 # Appendice — l'alternativa `--profile`
 
+[English](profiles-appendix.md) | Italiano
+
 Più leggera dello standard `CODEX_HOME`: non crea cartelle separate e non usa
 un wrapper. In cambio **non** isola credenziali e log, quindi non aiuta ad
 attribuire i costi. È adatta se alterni due progetti e vuoi cambiare manualmente

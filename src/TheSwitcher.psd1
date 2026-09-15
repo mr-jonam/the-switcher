@@ -1,6 +1,6 @@
 @{
     RootModule        = 'TheSwitcher.psm1'
-    ModuleVersion     = '1.0.0'
+    ModuleVersion     = '1.1.0'
     GUID              = 'd4701076-e68a-441a-a4a2-d95ac322f710'
     Author            = 'mr-jonam'
     Description       = 'Per-project OpenAI API key switching for Codex CLI on Windows. One CODEX_HOME per project, resolved from the current directory.'

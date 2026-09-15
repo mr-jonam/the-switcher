@@ -3,15 +3,17 @@
 # {{DESCRIPTION}}
 # Expected API key: {{API_KEY_NAME}}
 #
-# LOCATION: <the project's CODEX_HOME>\config.toml
-#           e.g. %USERPROFILE%\.codex-homes\{{PROJECT_NAME}}\config.toml
+# LOCATION: <the project's CODEX_HOME>/config.toml
+#           Windows: %USERPROFILE%\.codex-homes\{{PROJECT_NAME}}\config.toml
+#           Unix:    $HOME/.codex-homes/{{PROJECT_NAME}}/config.toml
 #
 # This file applies to this project only: model, guardrails and credentials
 # stay isolated from every other CODEX_HOME.
 # ------------------------------------------------------------------
 
 # Where credentials live:
-#   "keyring" -> Windows Credential Manager (recommended)
+#   "keyring" -> Windows Credential Manager, macOS Keychain, or the
+#                desktop Secret Service on Linux (recommended)
 #   "file"    -> plaintext auth.json inside the CODEX_HOME
 #   "auto"    -> keyring, falling back to file
 # The keyring entry is derived from the CODEX_HOME path, so projects stay

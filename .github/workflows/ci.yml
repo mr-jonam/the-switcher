@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
@@ -61,3 +61,27 @@ jobs:
           $cfg.Output.Verbosity = 'Detailed'
           $cfg.Run.Exit = $true
           Invoke-Pester -Configuration $cfg
+
+  unix:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Syntax checks
+        shell: bash
+        run: |
+          bash -n install.sh src/the-switcher.sh tests/test-unix.sh
+          python3 -m py_compile src/the_switcher_unix.py
+
+      - name: ShellCheck
+        if: runner.os == 'Linux'
+        shell: bash
+        run: shellcheck install.sh src/the-switcher.sh tests/test-unix.sh
+
+      - name: Unix tests
+        shell: bash
+        run: bash tests/test-unix.sh

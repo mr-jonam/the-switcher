@@ -1,5 +1,7 @@
 # Appendix — the `--profile` alternative
 
+English | [Italiano](profiles-appendix.it.md)
+
 Lighter than the `CODEX_HOME` standard: no separate folders, no wrapper. In
 exchange it does **not** isolate credentials or logs, so it does not help with
 cost attribution. Fine if you juggle two projects and only want to swap

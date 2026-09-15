@@ -1,5 +1,7 @@
 # Troubleshooting
 
+English | [Italiano](troubleshooting.it.md)
+
 | Symptom | Cause / fix |
 |---|---|
 | `cannot be loaded because running scripts is disabled` | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, or launch with `-ExecutionPolicy Bypass` |
@@ -9,6 +11,10 @@
 | Login rejected with `--with-api-key` | older Codex CLI build: run `Use-CodexProject <name>` then interactive `codex login` |
 | The VS Code extension uses the wrong key | CLI and IDE extension share login state — the IDE has to see the same `CODEX_HOME`; launch it from a terminal where the project is already resolved |
 | The wrong project is picked in a repo | check the `ResolvedBy` field of `Get-CodexProject`; the `.codexproject` marker beats the `paths` map |
+| `python3 is required` on Linux/macOS | install Python 3, or set `SWITCHER_PYTHON` after installation when it has a non-standard name |
+| `switcher_connect: read: -s` fails | source the integration in Bash or Zsh; other POSIX shells are not supported |
+| Login cannot access a keyring on Linux | start an unlocked Secret Service-compatible desktop keyring; headless sessions may not provide one |
+| Commands are missing after `install.sh` | reload `~/.bashrc` or `~/.zshrc`, or run `exec "$SHELL" -l` |
 | `Access is denied` reading repo files, even elevated | usually not an ACL. Check Defender **Controlled Folder Access** (it blocks unapproved apps under Desktop/Documents and ignores elevation), OneDrive cloud-only files (attribute `O`), or Mark-of-the-Web from an extracted ZIP (`Get-ChildItem -Recurse \| Unblock-File`). Moving the repo to `C:\dev\...` sidesteps all three. |
 
 ## Files were unblocked but a tool still can't read them

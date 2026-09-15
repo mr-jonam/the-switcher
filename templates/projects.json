@@ -1,5 +1,6 @@
 {
   "_comment": "Project -> API key -> CODEX_HOME map. Replace every proj-* name and example path with your own values. Installed to %USERPROFILE%\\.the-switcher\\projects.json. Never put actual API keys in this file.",
+  "_comment_it": "Mappa progetto -> etichetta chiave -> CODEX_HOME. Sostituisci ogni nome proj-* e percorso di esempio. Non inserire mai API key in questo file.",
 
   "default": "proj-default",
 

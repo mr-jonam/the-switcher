@@ -41,7 +41,7 @@ Describe 'Resolve-CodexProject' {
             $p = Resolve-CodexProject
             $p.Name       | Should -Be 'proj-1'
             $p.Source     | Should -Be 'path map'
-            $p.ApiKeyName | Should -Be 'KEY_A'
+            $p.ApiKeyName | Should -Be 'KEY_1'
         } finally { Pop-Location }
     }
 

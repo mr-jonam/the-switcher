@@ -1,0 +1,31 @@
+{
+  "_comment": "Replace every proj-* name and example path. Never put API keys in this file.",
+  "_comment_it": "Sostituisci ogni nome proj-* e percorso di esempio. Non inserire mai API key in questo file.",
+  "default": "proj-default",
+  "projects": {
+    "proj-default": {
+      "description": "Fallback outside mapped projects",
+      "apiKeyName": "(none / ChatGPT account)",
+      "codexHome": "${HOME}/.codex",
+      "paths": []
+    },
+    "proj-1": {
+      "description": "Example project 1; replace this text",
+      "apiKeyName": "KEY_PROJ_1",
+      "codexHome": "${HOME}/.codex-homes/proj-1",
+      "paths": ["${HOME}/dev/proj-1"]
+    },
+    "proj-2": {
+      "description": "Example project 2; replace this text",
+      "apiKeyName": "KEY_PROJ_2",
+      "codexHome": "${HOME}/.codex-homes/proj-2",
+      "paths": ["${HOME}/dev/proj-2"]
+    },
+    "proj-3": {
+      "description": "Example project 3; replace this text",
+      "apiKeyName": "KEY_PROJ_3",
+      "codexHome": "${HOME}/.codex-homes/proj-3",
+      "paths": ["${HOME}/dev/proj-3"]
+    }
+  }
+}

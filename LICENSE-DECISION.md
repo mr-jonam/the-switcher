@@ -1,14 +1,16 @@
 # License decision
 
+English | [Italiano](LICENSE-DECISION.it.md)
+
 **Decision date:** 2026-09-15
-**Scope:** The Switcher source code, PowerShell module, installation scripts,
+**Scope:** The Switcher source code, PowerShell and Unix wrappers, installation scripts,
 tests, templates, and repository documentation.
 **License:** MIT (`MIT` SPDX identifier)
 
 ## Rationale
 
 The rights holder selected MIT to support broad use, modification,
-redistribution, and commercial adoption of this Windows developer tool. MIT is
+redistribution, and commercial adoption of this cross-platform developer tool. MIT is
 an established permissive software license and is appropriate for this code
 and its accompanying technical documentation.
 
@@ -16,8 +18,8 @@ and its accompanying technical documentation.
 
 - The repository contains no vendored third-party source, datasets, model
   weights, or media as of this decision.
-- Dependencies invoked by users or CI (Codex CLI, `ccusage`, Pester, and
-  PSScriptAnalyzer) retain their own licenses and are not bundled here.
+- Dependencies invoked by users or CI (Codex CLI, `ccusage`, Python, Pester,
+  PSScriptAnalyzer and ShellCheck) retain their own licenses and are not bundled here.
 - `mr-jonam` is a public pseudonymous owner reference used for repository
   attribution; no personal identity, private key, API key, or recovery secret
   is stored in the repository.
