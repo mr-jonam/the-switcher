@@ -1,0 +1,5 @@
+# Codex project marker - place this file in the ROOT of your repository.
+# The first non-empty, non-comment line is the project name and must match
+# a key in projects.json. Replace proj-1 with your project's configured name.
+# Commit it: anyone who clones the repo gets the right key automatically.
+proj-1

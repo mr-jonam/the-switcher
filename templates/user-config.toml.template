@@ -1,0 +1,24 @@
+# ------------------------------------------------------------------
+# APPENDIX - the "profiles" approach: one provider per key
+#
+# LOCATION: %USERPROFILE%\.codex\config.toml
+#           (MERGE with your existing config, do not replace it)
+#
+# Every provider points at the same OpenAI API but reads its key from a
+# different environment variable. Switching profile switches the key.
+# ------------------------------------------------------------------
+
+[model_providers.proj-1]
+name     = "Project 1"
+base_url = "https://api.openai.com/v1"
+env_key  = "OPENAI_API_KEY_PROJ_1"
+
+[model_providers.proj-2]
+name     = "Project 2"
+base_url = "https://api.openai.com/v1"
+env_key  = "OPENAI_API_KEY_PROJ_2"
+
+[model_providers.proj-3]
+name     = "Project 3"
+base_url = "https://api.openai.com/v1"
+env_key  = "OPENAI_API_KEY_PROJ_3"

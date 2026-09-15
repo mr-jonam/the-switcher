@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Parse check (PowerShell 7)
+        shell: pwsh
+        run: |
+          $failed = $false
+          Get-ChildItem -Recurse -Include *.ps1,*.psm1,*.psd1 | ForEach-Object {
+            $errors = $null; $tokens = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count) {
+              $failed = $true
+              Write-Host "::error file=$($_.FullName)::$($errors[0].Message)"
+            } else {
+              Write-Host "OK $($_.Name)"
+            }
+          }
+          if ($failed) { exit 1 }
+
+      - name: Parse check (Windows PowerShell 5.1)
+        shell: powershell
+        run: |
+          $failed = $false
+          Get-ChildItem -Recurse -Include *.ps1,*.psm1,*.psd1 | ForEach-Object {
+            $errors = $null; $tokens = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count) { $failed = $true; Write-Host "FAIL $($_.Name): $($errors[0].Message)" }
+          }
+          if ($failed) { exit 1 }
+
+      - name: Validate module manifest
+        shell: pwsh
+        run: Test-ModuleManifest ./src/TheSwitcher.psd1 | Format-List Name, Version, PowerShellVersion
+
+      - name: PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          Install-Module PSScriptAnalyzer -Force -Scope CurrentUser -SkipPublisherCheck
+          $r = Invoke-ScriptAnalyzer -Path . -Recurse -Severity Error,Warning -ExcludeRule PSAvoidUsingWriteHost, PSUseShouldProcessForStateChangingFunctions
+          $r | Format-Table -AutoSize
+          if ($r | Where-Object Severity -eq 'Error') { exit 1 }
+
+      - name: Pester
+        shell: pwsh
+        run: |
+          Install-Module Pester -Force -Scope CurrentUser -SkipPublisherCheck -MinimumVersion 5.5.0
+          Import-Module Pester -MinimumVersion 5.5.0
+          $cfg = New-PesterConfiguration
+          $cfg.Run.Path = './tests'
+          $cfg.Output.Verbosity = 'Detailed'
+          $cfg.Run.Exit = $true
+          Invoke-Pester -Configuration $cfg

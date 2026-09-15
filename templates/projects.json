@@ -1,0 +1,42 @@
+{
+  "_comment": "Project -> API key -> CODEX_HOME map. Replace every proj-* name and example path with your own values. Installed to %USERPROFILE%\\.the-switcher\\projects.json. Never put actual API keys in this file.",
+
+  "default": "proj-default",
+
+  "projects": {
+    "proj-default": {
+      "description": "Fallback when you are not inside a mapped project",
+      "apiKeyName": "(none / ChatGPT account)",
+      "codexHome": "%USERPROFILE%\\.codex",
+      "paths": []
+    },
+
+    "proj-1": {
+      "description": "Example project 1; replace this text",
+      "apiKeyName": "KEY_PROJ_1",
+      "codexHome": "%USERPROFILE%\\.codex-homes\\proj-1",
+      "paths": [
+        "C:\\dev\\proj-1",
+        "D:\\repos\\proj-1"
+      ]
+    },
+
+    "proj-2": {
+      "description": "Example project 2; replace this text",
+      "apiKeyName": "KEY_PROJ_2",
+      "codexHome": "%USERPROFILE%\\.codex-homes\\proj-2",
+      "paths": [
+        "C:\\dev\\proj-2"
+      ]
+    },
+
+    "proj-3": {
+      "description": "Example project 3; replace this text",
+      "apiKeyName": "KEY_PROJ_3",
+      "codexHome": "%USERPROFILE%\\.codex-homes\\proj-3",
+      "paths": [
+        "C:\\dev\\proj-3"
+      ]
+    }
+  }
+}

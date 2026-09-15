@@ -1,0 +1,16 @@
+# Local state that must never be committed
+auth.json
+*.key
+.codex-homes/
+.the-switcher/
+
+# Windows / editors
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/
+
+# Build / packaging output
+*.zip
+out/

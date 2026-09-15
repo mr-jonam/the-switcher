@@ -1,0 +1,36 @@
+# ------------------------------------------------------------------
+# Codex CLI configuration for project "{{PROJECT_NAME}}"
+# {{DESCRIPTION}}
+# Expected API key: {{API_KEY_NAME}}
+#
+# LOCATION: <the project's CODEX_HOME>\config.toml
+#           e.g. %USERPROFILE%\.codex-homes\{{PROJECT_NAME}}\config.toml
+#
+# This file applies to this project only: model, guardrails and credentials
+# stay isolated from every other CODEX_HOME.
+# ------------------------------------------------------------------
+
+# Where credentials live:
+#   "keyring" -> Windows Credential Manager (recommended)
+#   "file"    -> plaintext auth.json inside the CODEX_HOME
+#   "auto"    -> keyring, falling back to file
+# The keyring entry is derived from the CODEX_HOME path, so projects stay
+# isolated in keyring mode too.
+cli_auth_credentials_store = "keyring"
+
+# --- Model and reasoning effort -----------------------------------
+# Uncomment and align with your team's standard. Keeping the same model
+# across projects makes the cost numbers comparable.
+# model = "gpt-5.4"
+# model_reasoning_effort = "medium"
+
+# --- Optional guardrails ------------------------------------------
+# approval_policy = "on-request"
+# sandbox_mode    = "workspace-write"
+
+# --- Custom provider (only if you do NOT hit api.openai.com directly)
+# [model_providers.proxy]
+# name     = "OpenAI via corporate proxy"
+# base_url = "https://proxy.internal.example/v1"
+# env_key  = "OPENAI_API_KEY_{{PROJECT_NAME}}"
+# model_provider = "proxy"

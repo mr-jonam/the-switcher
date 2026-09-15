@@ -1,0 +1,16 @@
+# ------------------------------------------------------------------
+# APPENDIX - the "profiles" approach (lighter alternative to CODEX_HOME)
+#
+# LOCATION: %USERPROFILE%\.codex\<profile-name>.config.toml
+#           e.g. %USERPROFILE%\.codex\proj-1.config.toml
+#
+# Usage: codex --profile proj-1
+#        codex exec --profile proj-1 "..."
+#
+# Since 0.134.0, [profiles.<name>] sections inside config.toml are deprecated:
+# each profile gets its own file with top-level keys.
+# ------------------------------------------------------------------
+
+model_provider = "proj-1"
+# model = "gpt-5.4"
+# model_reasoning_effort = "medium"
