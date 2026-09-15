@@ -24,7 +24,7 @@ python3 -c 'import sys; raise SystemExit(sys.version_info < (3, 9))' || {
     printf '%s\n' 'Python 3.9 or newer is required.' >&2
     exit 1
 }
-script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+script_dir=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd)
 install_dir="${SWITCHER_INSTALL_DIR:-$HOME/.the-switcher}"
 installed_script="$install_dir/the-switcher.sh"
 installed_helper="$install_dir/the_switcher_unix.py"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eu
 
-repo_dir=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+repo_dir=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
 test_root=$(mktemp -d)
 trap 'rm -rf "$test_root"' EXIT
 mkdir -p "$test_root/dev/proj-1/sub" "$test_root/dev/proj-10" "$test_root/marked/child" "$test_root/other"
@@ -39,7 +39,10 @@ python3 "$helper" edit-profile --profile "$profile" --script "$repo_dir/src/the-
 python3 "$helper" edit-profile --profile "$profile" --script "$repo_dir/src/the-switcher.sh" --helper "$helper"
 [ "$(grep -c '^# >>> the-switcher >>>$' "$profile")" -eq 1 ]
 python3 "$helper" edit-profile --profile "$profile" --script "$repo_dir/src/the-switcher.sh" --helper "$helper" --remove
-! grep -q 'the-switcher' "$profile"
+if grep -q 'the-switcher' "$profile"; then
+    printf '%s\n' 'Managed profile block was not removed.' >&2
+    exit 1
+fi
 
 incomplete_profile="$test_root/incomplete-profile"
 printf '%s\n' 'keep-this-line' '# >>> the-switcher >>>' 'incomplete-block' > "$incomplete_profile"
@@ -48,7 +51,7 @@ grep -q '^incomplete-block$' "$incomplete_profile"
 
 export SWITCHER_HELPER="$helper"
 export SWITCHER_PYTHON=python3
-# shellcheck source=../src/the-switcher.sh
+# shellcheck source=src/the-switcher.sh
 . "$repo_dir/src/the-switcher.sh"
 switcher_use proj-1 >/dev/null
 [ "$SWITCHER_PROJECT" = 'proj-1' ]
